@@ -1,12 +1,13 @@
 package se.kth.iv1350.seminarie3.controller;
 import se.kth.iv1350.seminarie3.model.Payment;
-import se.kth.iv1350.seminarie3.model.SaleDTO;
+import se.kth.iv1350.seminarie3.model.Sale;
 import se.kth.iv1350.seminarie3.integration.ExternalAccountingSystem;
 import se.kth.iv1350.seminarie3.integration.ExternalInventorySystem;
 import se.kth.iv1350.seminarie3.model.Register;
+import se.kth.iv1350.seminarie3.model.SaleDTO;
 
 public class Controller{
-    private SaleDTO sale;
+    private Sale sale;
     private ExternalAccountingSystem accountingSystem;
     private ExternalInventorySystem inventorySystem;
     private Payment payment;
@@ -19,28 +20,16 @@ public class Controller{
     }
 
     public void startSale(){
-        sale = new SaleDTO();
+        sale = new Sale();
     }
 
-    public void addItem(String itemIdentifier){
-        if(sale.addItemToCart(itemIdentifier)){
-            System.out.println("Item successfully added to cart.");
-        }
-        else {
-            System.out.println("Item does not exist therefore it is invalid");
-        }
-       
+    public boolean addItem(String itemIdentifier){
+        return sale.addItemToCart(itemIdentifier);
     }
 
-    public void addMultipuleItems(String itemId,int itemQuantity){
-        if(sale.addMultipleItemsAtOnce(itemId,itemQuantity)){
-            System.out.println("Multipule items successfully added to cart.");
-        }
-        else {
-            System.out.println("Item does not exist therefore it is invalid");
-        }
+    public boolean addMultipuleItems(String itemId,int itemQuantity){
+        return sale.addMultipleItemsAtOnce(itemId,itemQuantity);
     }
-
 
     public double getRunningTotal() {
         return sale.getRunningTotal();
@@ -63,8 +52,8 @@ public class Controller{
         
     }
 
-    public SaleDTO getSale(){
-        return sale;
+    public SaleDTO getSaleDTO() {
+        return sale.toDTO();
     }
 
     public Payment getPayment (){

@@ -1,12 +1,12 @@
 package se.kth.iv1350.seminarie3.integration;
 import java.util.ArrayList;
 import java.util.List;
-import se.kth.iv1350.seminarie3.model.ItemDTO;
-import se.kth.iv1350.seminarie3.model.SaleDTO;
+import se.kth.iv1350.seminarie3.model.Item;
+import se.kth.iv1350.seminarie3.model.Sale;
 
 public class ExternalInventorySystem {
 
-    private List<ItemDTO> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     private double milkPrice = 10.0;
     private double proteinShakePrice = 26.0;
@@ -24,18 +24,18 @@ public class ExternalInventorySystem {
     private String  appleJuiceDescription = "Tasty";
 
     public ExternalInventorySystem() {
-        items.add(new ItemDTO("9876765443", "Milk", milkVat, milkPrice, "liter", milkDescription,0));
-        items.add(new ItemDTO("0752535696", "Protein Shake",proteinShakeVat, proteinShakePrice, "mililiter", proteinShakeDescription,0));
-        items.add(new ItemDTO("0737229360", "Soda", sodaVat, sodaPrice, "centiliter", sodaDescription,0));
-        items.add(new ItemDTO("0733823065", "Apple Juice", appleJuiceVat, appleJuicePrice, "liter", appleJuiceDescription,0));    
+        items.add(new Item("9876765443", "Milk", milkVat, milkPrice, "liter", milkDescription,0));
+        items.add(new Item("0752535696", "Protein Shake",proteinShakeVat, proteinShakePrice, "mililiter", proteinShakeDescription,0));
+        items.add(new Item("0737229360", "Soda", sodaVat, sodaPrice, "centiliter", sodaDescription,0));
+        items.add(new Item("0733823065", "Apple Juice", appleJuiceVat, appleJuicePrice, "liter", appleJuiceDescription,0));    
     }
     
-    public List<ItemDTO> getAllItems() {
+    public List<Item> getAllItems() {
         return items;
     }
 
-    public ItemDTO findItemUsingId(String id){
-        for(ItemDTO item : items){
+    public Item findItemUsingId(String id){
+        for(Item item : items){
             if(item.getId().equals(id)){
                 return item;
 
@@ -45,7 +45,7 @@ public class ExternalInventorySystem {
     }    
 
 
-    public void updateSaleInInventorySystem (SaleDTO sale){
+    public void updateSaleInInventorySystem (Sale sale){
 
         System.out.println(" The inventory has been updated given the saleinformation!");
 

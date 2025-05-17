@@ -1,71 +1,47 @@
-package se.kth.iv1350.seminarie3.model;
+package se.kth.iv1350.seminarie3.model; 
+
 
 public class ItemDTO {
-
-    private String name;
-    private String id;
-    private double price;
-    private String unitOfMeasure;
-    private String description;
-    private int vatRate;
+    private final String id;
+    private final String name;
+    private final int vatRate;
+    private final double price;
+    private final String unitOfMeasure;
+    private final String description;
     private int quantity;
 
-    public ItemDTO (String id,String name, int vatRate, double price, String unitOfMeasure, String description,int quantity){
-       this.id = id;
-       this.name = name;
-       this.price = price;
-       this.unitOfMeasure = unitOfMeasure;
-       this.description = description;
-       this.vatRate = vatRate;
-       this.quantity = quantity;
+    public ItemDTO(String id, String name, int vatRate, double price, String unitOfMeasure, String description, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.vatRate = vatRate;
+        this.price = price;
+        this.unitOfMeasure = unitOfMeasure;
+        this.description = description;
+        this.quantity = quantity;
     }
     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
-    }
-
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public String getName() {
+        return name;
     }
 
     public int getVatRate() {
         return vatRate;
     }
 
-    public void setVatRate(int vatRate) {
-        this.vatRate = vatRate;
+    public double getPrice() {
+        return price;
+    }
+
+    public String getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public int getQuantity() {
@@ -76,4 +52,3 @@ public class ItemDTO {
         this.quantity = quantity;
     }
 }
-
