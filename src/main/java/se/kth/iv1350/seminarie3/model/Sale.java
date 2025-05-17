@@ -37,12 +37,11 @@ public class Sale{
         this.discountDatabase = new DiscountDatabase();
     }
 
-    public boolean addItemToCart(String targetId) {
+    public void addItemToCart(String targetId) throws InvalidIdentifierException {
         Item targetItem = externalInventorySystem.findItemUsingId(targetId);
         
         if (targetItem == null) {
-           
-            return false; 
+            throw new InvalidIdentifierException("The following itemID is invalid" + targetId);
         }
     
         if (itemAlreadyInSaleList(targetItem)) {
@@ -51,7 +50,7 @@ public class Sale{
             addNewItemToCart(targetItem.getId());
         }
     
-        return true;
+       
     }
 
     

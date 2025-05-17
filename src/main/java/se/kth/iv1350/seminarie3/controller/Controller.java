@@ -5,6 +5,7 @@ import se.kth.iv1350.seminarie3.integration.ExternalAccountingSystem;
 import se.kth.iv1350.seminarie3.integration.ExternalInventorySystem;
 import se.kth.iv1350.seminarie3.model.Register;
 import se.kth.iv1350.seminarie3.model.SaleDTO;
+import se.kth.iv1350.seminarie3.model.InvalidIdentifierException;
 
 public class Controller{
     private Sale sale;
@@ -23,8 +24,8 @@ public class Controller{
         sale = new Sale();
     }
 
-    public boolean addItem(String itemIdentifier){
-        return sale.addItemToCart(itemIdentifier);
+    public void addItem(String itemIdentifier) throws InvalidIdentifierException{
+        sale.addItemToCart(itemIdentifier);
     }
 
     public boolean addMultipuleItems(String itemId,int itemQuantity){

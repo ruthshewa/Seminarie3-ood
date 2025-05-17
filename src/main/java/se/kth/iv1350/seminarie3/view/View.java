@@ -3,6 +3,7 @@ import se.kth.iv1350.seminarie3.controller.Controller;
 import se.kth.iv1350.seminarie3.model.SaleDTO;
 import se.kth.iv1350.seminarie3.model.Payment;
 import se.kth.iv1350.seminarie3.model.ItemDTO;
+import se.kth.iv1350.seminarie3.model.InvalidIdentifierException;
 
 public class View {
     private Controller controller;
@@ -32,14 +33,13 @@ public class View {
     }
 
     private void addItemAndPrint(String identifier){
-        boolean item = controller.addItem(identifier);
-        if(!item){
-            System.out.println( "Item does not exist");
-            return;
+        try{
+            controller.addItem(identifier);
+            System.out.println("Item successfully added to the cart.");
+            addItemAndPrint(identifier, 1);
+        }catch(InvalidIdentifierException e){
+            System.out.println("Fel: " + e.getMessage());
         }
-        
-        System.out.println( "Item successfully added to the cart.");
-        addItemAndPrint(identifier, 1); 
     }
    
 
@@ -76,7 +76,10 @@ public class View {
         controller.cashPayment(300.0);
 
         printReceipt();
+        
     }
+
+
 
 
     
