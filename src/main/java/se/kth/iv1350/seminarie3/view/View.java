@@ -38,7 +38,7 @@ public class View {
             System.out.println("Item successfully added to the cart.");
             addItemAndPrint(identifier, 1);
         }catch(InvalidIdentifierException e){
-            System.out.println("Fel: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
    
@@ -62,8 +62,11 @@ public class View {
     }
     public void runSale (){
 
-        controller.startSale();
         
+        
+
+        controller.startSale();
+    
         addItemAndPrint("9876765443");// Milk
         addItemAndPrint("0737229360");// Soda
         addItemAndPrint("9876765443");
@@ -76,6 +79,13 @@ public class View {
         controller.cashPayment(300.0);
 
         printReceipt();
+
+       
+
+
+        
+
+       
         
     }
 
